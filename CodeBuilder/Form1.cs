@@ -25,32 +25,32 @@ namespace CodeBuilder
             InitializeComponent();
         }
 
+
+        public string MakeCode()
+        {
+
+            return string.Concat(
+                "using System;\n namespace CodeBuilder {" +
+                "\t\n\t static class Program {\n\t" +
+                "static void Main() {\n\t" +
+                "Console.WriteLine( \"" + txtHost.Text + "\");\n\t" +
+                "Console.WriteLine(" + "\"" + txtPort.Text + "\");\n\t" +
+                "Console.ReadKey();" +
+                "\n\t\t\t}\n\t\t}" + "\n\t};");
+
+        }
         private void BtnCompile_Click(object sender, EventArgs e)
         {
 
-            /*
-             namespace CodeBuilder
-{
-   static class Program
-  {     
-    static void Main()
-        {
-	System.Console.WriteLine("test");
-	 System.  Console.ReadKey();
-
-       }
-   }
-}
-             */
             //خالی کردن تکست استاتوس برای کد
             txtstatus.Clear();
 
             //ساخت یک آبحکت از کلاس شخصی کننده کد سی شارپ وتعیین وزژن فرم ورک
-            CSharpCodeProvider csc = new CSharpCodeProvider(new Dictionary<string, string>() { { comp[0], comp[3]} });
+            CSharpCodeProvider csc = new CSharpCodeProvider(new Dictionary<string, string>() { { comp[0], comp[3] } });
 
             ///ساخت آبجکتی از کلاس کامپل کننده موارد و دادن ریفرنس ها به او در یک آرایه جدید و بعد مکان و اسم فایل ساخته شده رو
             ///تعیین میکنیم و بعد روشن قرارش میدیم
-            CompilerParameters parameters = new CompilerParameters(new[] { myref[0], myref[1] }, txtSavePath.Text + ".exe", true);
+            CompilerParameters parameters = new CompilerParameters(new[] { myref[0], myref[1] }, txtSavePath.Text + comp[1], true);
 
             //دستور ساخت فایل اجرایی 
             parameters.GenerateExecutable = true;
@@ -68,7 +68,7 @@ namespace CodeBuilder
             else
             {
                 //پیغام موفقعیت
-                txtstatus.Text =comp[4] ;
+                txtstatus.Text = comp[4];
                 ///فایل رو که در مکان سیو شده کامپل و ذخیره کردی رو اجرا کن
                 Process.Start(txtSavePath.Text + comp[1]);
             }
@@ -84,6 +84,17 @@ namespace CodeBuilder
             {
                 txtSavePath.Text = s.FileName;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtSource.Text = MakeCode();
+            MessageBox.Show(MakeCode());
+
         }
     }
 }

@@ -35,6 +35,9 @@
             this.btnBrows = new System.Windows.Forms.Button();
             this.txtSavePath = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -47,11 +50,9 @@
             this.txtSource.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSource.Location = new System.Drawing.Point(0, 0);
             this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(733, 297);
+            this.txtSource.Size = new System.Drawing.Size(733, 267);
             this.txtSource.TabIndex = 0;
-            this.txtSource.Text = "namespace CodeBuilder\n{\n   static class Program\n  {     \n    static void Main()\n " +
-    "       {\n\tSystem.Console.WriteLine(\"test\");\n\t System.  Console.ReadKey();\n\n     " +
-    "  }\n   }\n}";
+            this.txtSource.Text = "";
             // 
             // BtnCompile
             // 
@@ -69,19 +70,22 @@
             this.txtstatus.Location = new System.Drawing.Point(0, 0);
             this.txtstatus.Name = "txtstatus";
             this.txtstatus.ReadOnly = true;
-            this.txtstatus.Size = new System.Drawing.Size(733, 139);
+            this.txtstatus.Size = new System.Drawing.Size(733, 124);
             this.txtstatus.TabIndex = 2;
             this.txtstatus.Text = "";
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.txtPort);
+            this.panel1.Controls.Add(this.txtHost);
             this.panel1.Controls.Add(this.btnBrows);
             this.panel1.Controls.Add(this.txtSavePath);
             this.panel1.Controls.Add(this.BtnCompile);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(733, 44);
+            this.panel1.Size = new System.Drawing.Size(733, 89);
             this.panel1.TabIndex = 3;
             // 
             // btnBrows
@@ -105,7 +109,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 44);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 89);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -116,9 +120,35 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.txtstatus);
-            this.splitContainer1.Size = new System.Drawing.Size(733, 440);
-            this.splitContainer1.SplitterDistance = 297;
+            this.splitContainer1.Size = new System.Drawing.Size(733, 395);
+            this.splitContainer1.SplitterDistance = 267;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(517, 14);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(100, 20);
+            this.txtHost.TabIndex = 9;
+            this.txtHost.Text = "testhost";
+            // 
+            // txtPort
+            // 
+            this.txtPort.Location = new System.Drawing.Point(517, 40);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(100, 20);
+            this.txtPort.TabIndex = 9;
+            this.txtPort.Text = "testport";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(388, 55);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -129,6 +159,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -148,6 +179,9 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnBrows;
         private System.Windows.Forms.TextBox txtSavePath;
+        private System.Windows.Forms.TextBox txtHost;
+        private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.Button button1;
     }
 }
 
